@@ -10,6 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 public class Employee {
@@ -18,12 +22,18 @@ public class Employee {
 	@GeneratedValue
 	private Long id;
 	
+	@NotBlank
+	@Size(min=2, message = "First Name must be at least 2 characters!")
 	@Column(name = "first_name")
 	private String firstName;
 	
+	@NotBlank
+	@Size(min=2, message = "Last Name must be at least 2 characters!")
 	@Column(name = "last_name")
 	private String lastName;
 	
+	
+	@DecimalMin(value="0")
 	private Double salary;
 		
 	@Temporal(TemporalType.DATE)

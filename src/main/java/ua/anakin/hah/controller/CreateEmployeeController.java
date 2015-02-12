@@ -37,7 +37,9 @@ public class CreateEmployeeController {
 	@RequestMapping(value="/create-employee", method = RequestMethod.POST)
 	public String executeCreateEmployee(@ModelAttribute("employee-form") EmployeeForm employeeForm) {
 		employeeService.save(employeeForm);
-		employeeForm = new EmployeeForm();
+		employeeForm.setFirstName("");
+		employeeForm.setLastName("");
+		employeeForm.setSalary(null);
 		return "redirect:/create-employee.html?success=true";
 	}
 

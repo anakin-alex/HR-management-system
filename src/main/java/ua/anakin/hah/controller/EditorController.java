@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import ua.anakin.hah.entity.Division;
-import ua.anakin.hah.entity.Employee;
 import ua.anakin.hah.service.DivisionService;
 import ua.anakin.hah.service.EmployeeService;
 
@@ -33,23 +32,6 @@ public class EditorController {
 		model.addAttribute("employee", employeeService.findOne(id));
 		return "edit-employee";
 	}	
-	
-//	@ModelAttribute("create-employee")
-//	public Employee createEmployee() {
-//		return new Employee();
-//	}
-	
-//	@RequestMapping("/create-employee")
-//	public String showCreateEmployeePage(Model model) {
-//		model.addAttribute("divisions", divisionService.findAll());
-//		return "create-employee";
-//	}
-	
-//	@RequestMapping(value="/create-employee", method = RequestMethod.POST)
-//	public String executeCreateEmployee(@ModelAttribute("create-employee") Employee employee) {
-//		employeeService.save(employee);
-//		return "redirect:/create-employee.html?success=true";
-//	}
 	
 	@ModelAttribute("create-division")
 	public Division createDivision() {

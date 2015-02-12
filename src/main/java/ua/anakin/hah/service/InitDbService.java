@@ -87,7 +87,7 @@ public class InitDbService {
 		
 		Employee employee1 = new Employee();
 		employee1.setFirstName("Борис");
-		employee1.setLastName("Иванов");
+		employee1.setLastName("Ivanov");
 		employee1.setSalary(5000d);
 		employee1.setBirthdate(new SimpleDateFormat("dd.mm.yyyy").parse("01.02.1970"));
 		employee1.setActive(true);
@@ -96,7 +96,7 @@ public class InitDbService {
 		
 		Employee employee2 = new Employee();
 		employee2.setFirstName("Елена");
-		employee2.setLastName("Петрова");
+		employee2.setLastName("Petrova");
 		employee2.setSalary(3000d);
 		employee2.setBirthdate(new SimpleDateFormat("dd.mm.yyyy").parse("24.08.1991"));
 		employee2.setActive(true);
@@ -105,7 +105,7 @@ public class InitDbService {
 		
 		Employee employee3 = new Employee();
 		employee3.setFirstName("Марфа");
-		employee3.setLastName("Кошкина");
+		employee3.setLastName("Catty");
 		employee3.setSalary(6000d);
 		employee3.setBirthdate(new SimpleDateFormat("dd.mm.yyyy").parse("15.04.1966"));
 		employee3.setActive(true);
@@ -114,7 +114,7 @@ public class InitDbService {
 		
 		Employee employee4 = new Employee();
 		employee4.setFirstName("Татьяна");
-		employee4.setLastName("Иванова");
+		employee4.setLastName("Vetrova");
 		employee4.setSalary(3000d);
 		employee4.setBirthdate(new SimpleDateFormat("dd.mm.yyyy").parse("30.12.1982"));
 		employee4.setActive(true);
@@ -123,7 +123,7 @@ public class InitDbService {
 		
 		Employee employee5 = new Employee();
 		employee5.setFirstName("Родион");
-		employee5.setLastName("Алексеев");
+		employee5.setLastName("Alekseev");
 		employee5.setSalary(2500d);
 		employee5.setBirthdate(new SimpleDateFormat("dd.mm.yyyy").parse("05.10.1973"));
 		employee5.setActive(false);

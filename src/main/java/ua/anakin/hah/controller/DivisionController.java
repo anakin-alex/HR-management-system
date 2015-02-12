@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ua.anakin.hah.service.DivisionService;
+import ua.anakin.hah.service.EmployeeService;
 
 @Controller
 @RequestMapping("/divisions")
@@ -15,17 +16,14 @@ public class DivisionController {
 	@Autowired
 	private DivisionService divisionService;
 	
+	@Autowired
+	private EmployeeService employeeService;
+	
 	@RequestMapping
 	public String showDivisionsPage(Model model) {
-		model.addAttribute("divisions", divisionService.findAll());
+		model.addAttribute("divisions", divisionService.findAllWithEmployees());
 		return "divisions";
 	}
-	
-//	@RequestMapping("/employees/{id}")
-//	public String employeeDetail(Model model, @PathVariable long id) {
-//		model.addAttribute("employee", divisionService.findOne(id));
-//		return "employee-detail";
-//	}
 	
 	@RequestMapping("/remove/{id}")
 	public String removeDivision(@PathVariable long id) {

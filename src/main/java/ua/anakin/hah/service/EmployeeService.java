@@ -20,7 +20,6 @@ import ua.anakin.hah.repository.RoleRepository;
 @Transactional
 public class EmployeeService {
 	
-	
 	@Autowired
 	private EmployeeRepository employeeRepository;
 	
@@ -44,16 +43,18 @@ public class EmployeeService {
 
 	public void save(EmployeeForm employeeForm) {
 		Employee employee = new Employee();
-		employee.setFirstName(employeeForm.getFirstName());
-		employee.setLastName(employeeForm.getLastName());
+		employee.setFirstName(Tools.standardize(employeeForm.getFirstName()));
+		employee.setLastName(Tools.standardize(employeeForm.getLastName()));
 		employee.setSalary(employeeForm.getSalary());
 		try {
 			employee.setBirthdate(new SimpleDateFormat("dd.mm.yyyy").parse(employeeForm.getBirthdate()));
 		} catch (ParseException e) {
 			employee.setBirthdate(new Date());
 		}
+		employee.setActive(employeeForm.getActive());
 		employee.setDivision(divisionRepository.findByName(employeeForm.getDivisionName()));
 		employeeRepository.save(employee);
 	}
+	
 
 }

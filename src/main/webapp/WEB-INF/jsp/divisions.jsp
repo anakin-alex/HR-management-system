@@ -11,6 +11,11 @@ $(document).ready(function() {
 		$("#modalRemove").modal();
 	});
 });
+
+var counter = function() {
+	return counter.count++;
+};
+counter.count = 0;
 </script>
 
 <table class="table table-bordered table-hover table-striped">
@@ -28,7 +33,7 @@ $(document).ready(function() {
 				<c:out value="${division.name}" /> 
 			</td>
 			<td>
-				<c:out value="${division.name}" />
+				<c:out value="${fn:length(division.employees)}" />
 			</td>
 			<td>
 				<a href="<spring:url value="/divisions/${division.id}.html"/>" class="btn btn-warning">

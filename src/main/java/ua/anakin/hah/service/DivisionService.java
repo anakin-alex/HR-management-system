@@ -5,11 +5,12 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import ua.anakin.hah.entity.Division;
+import ua.anakin.hah.entity.Employee;
 import ua.anakin.hah.repository.DivisionRepository;
+import ua.anakin.hah.repository.EmployeeRepository;
 import ua.anakin.hah.repository.RoleRepository;
 
 @Service
@@ -22,6 +23,9 @@ public class DivisionService {
 	
 	@Autowired
 	private RoleRepository roleRepository;
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
 	
 	public List<Division> findAll() {
 		return divisionRepository.findAll();
@@ -36,7 +40,17 @@ public class DivisionService {
 	}
 
 	public void save(Division division) {
+		division.setName(Tools.standardize(division.getName()));
 		divisionRepository.save(division);
+	}
+
+	public List<Division> findAllWithEmployees() {
+		List<Division> divisions = divisionRepository.findAll();
+		for (Division division : divisions) {
+			List<Employee> employees = employeeRepository.findByDivision(division);
+			division.setEmployees(employees);
+		}		
+		return divisions;
 	}
 
 }

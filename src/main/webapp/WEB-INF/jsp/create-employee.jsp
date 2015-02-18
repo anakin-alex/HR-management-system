@@ -6,11 +6,15 @@
  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<script src="../js/datepicker-ru.js"></script>
+<script src="../js/tFormer.min.js"></script>
+<script src="../js/birthdate.js" charset="utf-8"></script>
 
-<h3>Создание новой записи сотрудника.</h3>
+<div class="text-center">
+	<h3>Создание новой записи сотрудника.</h3>
+</div>
+<br>
 
-<form:form commandName="employee-form" cssClass="form-horizontal registrationForm">
+<form:form commandName="employee-form" id="createEmployee" cssClass="form-horizontal">
 	
 	<c:if test="${param.success eq true}">
 		<div class="alert alert-success">Новая запись занесена в базу данных</div>
@@ -21,6 +25,7 @@
 		<div class="col-sm-10">
 			<form:input path="firstName" placeholder="Введите имя сотрудника" cssClass="form-control" />
 			<form:errors path="firstName" />
+			<p class="text-primary">Допускаются имена только из символов русского алфавита, а также двойные имена через дефис.</p>
 		</div>
 	</div>
 	<div class="form-group">
@@ -28,6 +33,7 @@
 		<div class="col-sm-10">
 			<form:input path="lastName" placeholder="Введите фамилию сотрудника" cssClass="form-control" />
 			<form:errors path="lastName" />
+			<p class="text-primary">Допускаются фамилии только из символов русского алфавита, а также двойные фамилии через дефис.</p>
 		</div>
 	</div>
   	<div class="form-group">
@@ -35,6 +41,7 @@
 		<div class="col-sm-10">
 			<form:input path="salary" placeholder="Введите размер зароботной платы в гривнах" cssClass="form-control" />
 			<form:errors path="salary" />
+			<p class="text-primary">Допускаются числа больше 0 и меньше 100000 в формате "NN.NN" (с десятичной точкой).</p>
 		</div>
 	</div>
 	<div>
@@ -46,6 +53,7 @@
   			<option><c:out value="${division_var.name}" /></option>
   			</c:forEach>
 		</form:select>
+		<p class="text-primary">По умолчанию все принятые на работу сотрудники окажутся в отделе "Стажеры".</p>
 		</div>
 		</div>
 	</div>
@@ -54,33 +62,7 @@
 		<div class="col-sm-10">
 			<input type="text" name="birthdate" id="birthdate"
 			placeholder="Введите возраст сотрудника (согласно КзОТ не младше 18-ти лет)" class="form-control"/>			
-			<script>
-				$(function() {
-				$( "#birthdate" ).datepicker({
-					closeText: 'Закрыть',
-					prevText: '&#x3C;Пред',
-					nextText: 'След&#x3E;',
-					currentText: 'Сегодня',
-					monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь',
-					'Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
-					monthNamesShort: ['Янв','Фев','Мар','Апр','Май','Июн',
-					'Июл','Авг','Сен','Окт','Ноя','Дек'],
-					dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
-					dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
-					dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
-					weekHeader: 'Нед',
-					dateFormat: 'dd.mm.yy',
-					firstDay: 1,
-					isRTL: false,
-					showMonthAfterYear: false,
-					yearSuffix: '',
-					maxDate: "-18Y",
-					minDate: "-100Y",
-					changeMonth: true,
-					changeYear: true
-					});
-				});
-			</script>			
+			<form:errors path="birthdate" />			
 		</div>
 	</div>
 	<div class="form-group">
@@ -101,3 +83,23 @@
 	</div>
 	
 </form:form>
+
+<script>
+var createEmployee = new tFormer('createEmployee',{
+	fields: {
+		firstName: {
+			rules: '* reg=^([А-я]){2,20}(-([а-я]){2,20})?$'
+		},
+		lastName: {
+			rules: '* reg=^([А-я]){2,20}(-([а-я]){2,20})?$'
+		},
+		salary: {
+			rules: '* reg=^[1-9]{1,1}[0-9]{0,4}(\\.([0-9]){2,2})?$'
+		},
+		birthdate: {
+			rules: ''
+		}
+	}
+	
+});
+</script>

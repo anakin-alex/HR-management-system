@@ -7,6 +7,6 @@ import ua.anakin.hah.entity.Division;
 public interface DivisionRepository extends JpaRepository<Division, Long>{
 
 	Division findByName(String name);
-	
+
 	
 }

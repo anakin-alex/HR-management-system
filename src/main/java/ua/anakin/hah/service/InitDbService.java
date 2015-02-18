@@ -1,4 +1,4 @@
-package ua.anakin.hah.service;
+Ôªøpackage ua.anakin.hah.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,6 +42,7 @@ public class InitDbService {
 	@PostConstruct
 	public void init() throws ParseException {
 		
+		if(roleRepository.findByName("ROLE_EDITOR") == null) {
 		Role roleReader = new Role();
 		roleReader.setName("ROLE_READER");
 		roleRepository.save(roleReader);
@@ -73,21 +74,25 @@ public class InitDbService {
 		userEditor.setRoles(editorRoles);
 		userRepository.save(userEditor);
 		
+		Division newEmployees = new Division();
+		newEmployees.setName("–°—Ç–∞–∂–µ—Ä—ã");
+		divisionRepository.save(newEmployees);
+		
 		Division humanResources = new Division();
-		humanResources.setName("ŒÚ‰ÂÎ Í‡‰Ó‚");
+		humanResources.setName("–û—Ç–¥–µ–ª –∫–∞–¥—Ä–æ–≤");
 		divisionRepository.save(humanResources);
 		
 		Division accountsDepartment = new Division();
-		accountsDepartment.setName("¡Ûı„‡ÎÚÂËˇ");
+		accountsDepartment.setName("–ë—É—Ö–≥–∞–ª—Ç–µ—Ä–∏—è");
 		divisionRepository.save(accountsDepartment);
 		
 		Division logisticDepartment = new Division();
-		logisticDepartment.setName("ŒÚ‰ÂÎ ÎÓ„ËÒÚËÍË");
+		logisticDepartment.setName("–û—Ç–¥–µ–ª –ª–æ–≥–∏—Å—Ç–∏–∫–∏");
 		divisionRepository.save(logisticDepartment);
 		
 		Employee employee1 = new Employee();
-		employee1.setFirstName("¡ÓËÒ");
-		employee1.setLastName("Ivanov");
+		employee1.setFirstName("–ë–æ—Ä–∏—Å");
+		employee1.setLastName("–ì–æ–¥—É–Ω–æ–≤");
 		employee1.setSalary(5000d);
 		employee1.setBirthdate(new SimpleDateFormat("dd.mm.yyyy").parse("01.02.1970"));
 		employee1.setActive(true);
@@ -95,8 +100,8 @@ public class InitDbService {
 		employeeRepository.save(employee1);
 		
 		Employee employee2 = new Employee();
-		employee2.setFirstName("≈ÎÂÌ‡");
-		employee2.setLastName("Petrova");
+		employee2.setFirstName("–ï–ª–µ–Ω–∞");
+		employee2.setLastName("–ü–µ—Ç—Ä–æ–≤–∞");
 		employee2.setSalary(3000d);
 		employee2.setBirthdate(new SimpleDateFormat("dd.mm.yyyy").parse("24.08.1991"));
 		employee2.setActive(true);
@@ -104,8 +109,8 @@ public class InitDbService {
 		employeeRepository.save(employee2);
 		
 		Employee employee3 = new Employee();
-		employee3.setFirstName("Ã‡Ù‡");
-		employee3.setLastName("Catty");
+		employee3.setFirstName("–ú–∞—Ä—Ñ–∞");
+		employee3.setLastName("–ö–æ—à–∫–∏–Ω–∞");
 		employee3.setSalary(6000d);
 		employee3.setBirthdate(new SimpleDateFormat("dd.mm.yyyy").parse("15.04.1966"));
 		employee3.setActive(true);
@@ -113,8 +118,8 @@ public class InitDbService {
 		employeeRepository.save(employee3);
 		
 		Employee employee4 = new Employee();
-		employee4.setFirstName("“‡Ú¸ˇÌ‡");
-		employee4.setLastName("Vetrova");
+		employee4.setFirstName("–¢–∞—Ç—å—è–Ω–∞");
+		employee4.setLastName("–í–µ—Ç—Ä–æ–≤–∞");
 		employee4.setSalary(3000d);
 		employee4.setBirthdate(new SimpleDateFormat("dd.mm.yyyy").parse("30.12.1982"));
 		employee4.setActive(true);
@@ -122,13 +127,15 @@ public class InitDbService {
 		employeeRepository.save(employee4);
 		
 		Employee employee5 = new Employee();
-		employee5.setFirstName("–Ó‰ËÓÌ");
-		employee5.setLastName("Alekseev");
+		employee5.setFirstName("–†–æ–¥–∏–æ–Ω");
+		employee5.setLastName("–ê–ª–µ–∫—Å–µ–µ–≤");
 		employee5.setSalary(2500d);
 		employee5.setBirthdate(new SimpleDateFormat("dd.mm.yyyy").parse("05.10.1973"));
 		employee5.setActive(false);
 		employee5.setDivision(accountsDepartment);
-		employeeRepository.save(employee5);		
+		employeeRepository.save(employee5);
+		
+		}
 		
 	}
 }

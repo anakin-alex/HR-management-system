@@ -6,14 +6,16 @@
 <security:authorize access="! isAuthenticated()">
 	<br>
 	<div class="text-center">
+		
+		<h2>Система автоматизации работы отдела кадров</h2>
+		<h2>компании "Рога и Копыта"</h2>
+		<br><br>
+		
 		<img src="images/img.jpg" alt="Human Resource system" />
+		<br><br>	
 	
-	<br><br>
-	<h2>Система автоматизации работы отдела кадров</h2>
-	<h2>компании "Рога и Копыта"</h2>
-	<br><br>
-	<h3>Для просмотра информации, пожалуйста,
-		<a href="<spring:url value = "/login.html"/>">авторизуйтесь</a>.</h3>
+		<h3>Для просмотра информации о сотрудниках, пожалуйста,
+			<a href="<spring:url value = "/login.html"/>">авторизуйтесь</a>.</h3>
 
 	</div>
 </security:authorize>
@@ -39,7 +41,7 @@
 					<td><c:out value="${employee.firstName}" /></td>
 					<td><c:out value="${employee.lastName}" /></td>
 					<td><c:out value="${employee.division}" /></td>
-					<td><a href="<spring:url value="/employees/${employee.id}.html"/>" class="btn btn-info">Просмотр</a> </td>
+					<td><a href="<spring:url value="/employee-detail/${employee.id}.html"/>" class="btn btn-info">Просмотр</a> </td>
 				</tr>
 			</c:forEach>
 		</tbody>

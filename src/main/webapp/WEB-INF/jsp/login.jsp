@@ -47,7 +47,7 @@
 
 <br>
 
-<form class="form-signin" action="/j_spring_security_check" method="POST">
+<form class="form-signin" action="./j_spring_security_check" method="POST">
 	<h3 class="form-signin-heading">Введите имя и пароль:</h3>
 	<label for="j_username" class="sr-only">Логин</label>
 	<input type="text" name="j_username" class="form-control" placeholder="Name" required autofocus>

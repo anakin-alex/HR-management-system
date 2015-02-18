@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -22,20 +24,22 @@ public class Employee {
 	@GeneratedValue
 	private Long id;
 	
-	@NotBlank
-	@Size(min=2, message = "First Name must be at least 2 characters!")
+	@NotBlank(message="Имя не может состоять из пробелов")
+	@Size(min=2, message = "Длина имени не может быть менее 2-х букв")
 	@Column(name = "first_name")
 	private String firstName;
 	
-	@NotBlank
-	@Size(min=2, message = "Last Name must be at least 2 characters!")
+	@NotBlank(message="Фамилия не может состоять из пробелов")
+	@Size(min=2, message = "Длина фамилии не может быть менее 2-х букв")
 	@Column(name = "last_name")
 	private String lastName;
 	
 	
-	@DecimalMin(value="0")
+	@Digits(integer=5, fraction=2, message="Зарплата должна быть числом в формате NNNNN.nn")
+	@DecimalMin(value="0", message="Зарплата должна быть больше 0")
 	private Double salary;
 		
+	@NotNull(message="Поле даты не может быть пустым")
 	@Temporal(TemporalType.DATE)
 	@Column
 	private Date birthdate;

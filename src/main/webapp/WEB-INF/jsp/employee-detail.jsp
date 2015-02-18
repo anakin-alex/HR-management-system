@@ -13,6 +13,11 @@ $(document).ready(function() {
 });
 </script>
 
+<div class="text-center">
+	<h3>Данные о сотруднике компании "Рога и копыта"</h3>
+</div>
+<br>
+
 <table class="table table-bordered table-hover table-striped">
 	<thead>
 		<tr>
@@ -39,10 +44,7 @@ $(document).ready(function() {
 				<c:out value="${employee.salary}" />
 			</td>
 			<td>
-			
-				<fmt:formatDate value="${employee.birthdate}" pattern="dd.MM.yyyy"/>
-			
-<%-- 				<c:out value="${employee.birthdate}" /> --%>
+				<fmt:formatDate value="${employee.birthdate}" pattern="dd.MM.yyyy"/>			
 			</td>
 			<td>
 				<c:out value="${employee.division}" />

@@ -57,6 +57,7 @@
 						<security:authorize access="! isAuthenticated()">							
 							<li class="${current == 'index' ? 'active' : ''}"><a href="<spring:url value = "/"/>">Главная</a></li>
 							<li class="${current == 'login' ? 'active' : ''}"><a href="<spring:url value = "/login.html"/>">Вход</a></li>
+							<li class="${current == 'info' ? 'active' : ''}"><a href="<spring:url value = "/info.html"/>">Информация</a></li>
 						</security:authorize>
 						<security:authorize access="isAuthenticated()">
 							<li class="${current == 'index' ? 'active' : ''}"><a href="<spring:url value = "/"/>">Сотрудники</a></li>

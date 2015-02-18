@@ -1,8 +1,11 @@
 package ua.anakin.hah.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,19 +30,19 @@ public class CreateEmployeeController {
 		return new EmployeeForm();
 	}
 	
-	//put names of divisions into .jsp
 	@RequestMapping("/create-employee")
-	public String showCreateEmployeePage(Model model) {
+	public String showCreateEmployeePage(Model model, EmployeeForm employeeForm) {
 		model.addAttribute("divisions", divisionService.findAll());
 		return "create-employee";
 	}
 		
 	@RequestMapping(value="/create-employee", method = RequestMethod.POST)
-	public String executeCreateEmployee(@ModelAttribute("employee-form") EmployeeForm employeeForm) {
+	public String executeCreateEmployee(@Valid @ModelAttribute("employee-form") EmployeeForm employeeForm, BindingResult result) {
+		if (result.hasErrors()) {
+			return "create-employee"; //TODO need fix: after validation error don't show list of divisions 
+		}
 		employeeService.save(employeeForm);
-		employeeForm.setFirstName("");
-		employeeForm.setLastName("");
-		employeeForm.setSalary(null);
+		employeeForm.clear();
 		return "redirect:/create-employee.html?success=true";
 	}
 

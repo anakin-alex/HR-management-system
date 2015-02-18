@@ -16,13 +16,26 @@
             <param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss} %5p %c{1} - %m%n"/>
         </layout>
     </appender>
+    
+<!--     <appender name="ErrorEmailAppender" class="org.apache.log4j.net.SMTPAppender"> -->
+<!--     <param name="SMTPHost" value="smtp.gmail.com" /> -->
+<!--     <param name="SMTPUsername" value="aleksandr.anakin@gmail.com" /> -->
+<!--     <param name="SMTPPassword" value="password" /> -->
+<!--     <param name="From" value="myuser@mydomain.com" /> -->
+<!--     <param name="To" value="aleksandr.anakin@gmail.com" /> -->
+<!--     <param name="Subject" value="Log of messages" /> -->
+<!--     <param name="BufferSize" value="1" /> -->
+<!--     <param name="EvaluatorClass" value="TriggerLogEvent" /> -->
+<!--     <layout class="org.apache.log4j.PatternLayout"> -->
+<!--         <param name="ConversionPattern" value="%t %m%n"/> -->
+<!--     </layout> -->
+<!-- </appender> -->
 
-    <!--
-        <logger name="org.springframework" additivity="false">
-            <level value="error"/>
-            <appender-ref ref="consoleAppender"/>
-        </logger>
-    -->
+<!-- <logger name="com.foo.mailer"> -->
+<!--     <level value="INFO" /> -->
+<!--     <appender-ref ref="ErrorEmailAppender"/> -->
+<!-- </logger> -->
+
 
     <root>
         <level value="warn"/>

@@ -53,4 +53,9 @@ public class DivisionService {
 		return divisions;
 	}
 
+	public void updateDivision(Division editedDivision, long id) {
+		divisionRepository.findOne(id).setName(Tools.standardize(editedDivision.getName()));
+		divisionRepository.save(divisionRepository.findOne(id));
+	}
+
 }

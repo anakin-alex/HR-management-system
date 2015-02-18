@@ -21,10 +21,10 @@ public class Division {
 	@GeneratedValue
 	private Long id;
 	
-	@NotBlank
 	@Size(min = 2, message = "Название отдела не может быть меньше 2-х букв.")
+	@NotBlank(message="Название отдела не может состоять из пробелов")
 	@Column(unique = true)
-	@UniqueName(message = "Such division name already exists!")
+	@UniqueName(message = "Такой отдел уже существует")
 	private String name;
 	
 	@OneToMany(mappedBy="division", cascade=CascadeType.REMOVE)

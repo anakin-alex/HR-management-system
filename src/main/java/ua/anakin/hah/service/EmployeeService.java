@@ -43,6 +43,14 @@ public class EmployeeService {
 
 	public void save(EmployeeForm employeeForm) {
 		Employee employee = new Employee();
+		employeeRepository.save(setEmployeeAttributes(employee, employeeForm));
+	}
+
+	public void updateEmployee(EmployeeForm editEmployeeForm, long id) {
+		employeeRepository.save(setEmployeeAttributes(employeeRepository.findOne(id), editEmployeeForm));		
+	}
+	
+	private Employee setEmployeeAttributes(Employee employee, EmployeeForm employeeForm) {
 		employee.setFirstName(Tools.standardize(employeeForm.getFirstName()));
 		employee.setLastName(Tools.standardize(employeeForm.getLastName()));
 		employee.setSalary(employeeForm.getSalary());
@@ -53,7 +61,7 @@ public class EmployeeService {
 		}
 		employee.setActive(employeeForm.getActive());
 		employee.setDivision(divisionRepository.findByName(employeeForm.getDivisionName()));
-		employeeRepository.save(employee);
+		return employee;
 	}
 	
 

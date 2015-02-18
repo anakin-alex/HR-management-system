@@ -18,6 +18,11 @@ var counter = function() {
 counter.count = 0;
 </script>
 
+<div class="text-center">
+	<h3>Перечень отделов компании "Рога и копыта"</h3>
+</div>
+<br>
+
 <table class="table table-bordered table-hover table-striped">
 <thead>
 	<tr>
@@ -36,10 +41,10 @@ counter.count = 0;
 				<c:out value="${fn:length(division.employees)}" />
 			</td>
 			<td>
-				<a href="<spring:url value="/divisions/${division.id}.html"/>" class="btn btn-warning">
+				<a href="<spring:url value="/edit-division/${division.id}.html"/>" class="btn btn-warning">
 					Редактировать
 				</a>				
-				<a href="<spring:url value="/divisions/remove/${division.id}.html"/>" class="btn btn-danger triggerRemove">
+				<a href="<spring:url value="/remove-division/${division.id}.html"/>" class="btn btn-danger triggerRemove">
 					Удалить
 				</a>
 			</td>

@@ -1,5 +1,5 @@
 # HR-management-system
-#asdasdasdasd
+
 There are two types of users of HR-system.
 
 1. Reader have permission for reading data only. Login: <b>reader</b>, password: <b>reader</b>
